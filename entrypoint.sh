@@ -9,7 +9,7 @@
 #myth version
 #myth analyze calls.sol -o json
 
-ls -R
+ls -al /github/workspace
 
 
 #echo "Hello $1"
