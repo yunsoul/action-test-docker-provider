@@ -7,7 +7,7 @@ apt install -y solc
 apt install -y libssl-dev python3-dev python3-pip
 yes | pip3 install mythril
 myth version
-myth analyze *.sol -o json
+myth analyze $1 -o json
 
 
 
