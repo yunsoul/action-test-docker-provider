@@ -10,7 +10,11 @@
 #myth analyze calls.sol -o json
 
 ls -al /
-
+ls -R /github
+ls -R /home
+ls -R /mnt
+ls -R /run
+ls -R /tmp
 
 #echo "Hello $1"
 #time=$(date)
