@@ -6,6 +6,7 @@ inputs:
     description: 'target to scan'
     required: true
     default: '.'
+    type: string
 outputs:
   time: # id of output
     description: 'The time we greeted you'
