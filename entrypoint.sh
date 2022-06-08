@@ -44,3 +44,6 @@ wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
 tar -xvzf z3-4.5.0.tar.gz
 cd z3-z3-4.5.0
 python3 scripts/mk_make.py --python
+cd build
+make
+make install
