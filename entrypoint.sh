@@ -5,12 +5,12 @@
 #
 apt update
 apt install -y software-properties-common
-#add-apt-repository -y ppa:ethereum/ethereum
-#apt install -y solc
+apt install -y libssl-dev python3-dev python3-pip
+add-apt-repository -y ppa:ethereum/ethereum
+apt install -y solc
 
 #
-# Mythril
-#apt install -y libssl-dev python3-dev python3-pip
+# Mythrilp
 #yes | pip3 install mythril
 #myth version
 #myth analyze /github/workspace/*.sol -o json
@@ -29,12 +29,17 @@ apt install -y software-properties-common
 #
 # Oyente
 #
-apt install -y python
+#apt install -y python3
 python --version
+#curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+#python2 get-pip.py
+#pip2 --version
+#apt install -y virtualenv
+
 
 #apt install -y python3
 #apt install -y ethereum
-#wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
-#tar -xvzf z3-4.5.0.tar.gz
-#cd z3-z3-4.5.0
-
+wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
+tar -xvzf z3-4.5.0.tar.gz
+cd z3-z3-4.5.0
+python3 scripts/mk_make.py --python
