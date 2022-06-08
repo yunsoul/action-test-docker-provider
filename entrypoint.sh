@@ -30,7 +30,7 @@ apt install -y solc
 # Oyente
 #
 #apt install -y python3
-python --version
+python3 --version
 #curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
 #python2 get-pip.py
 #pip2 --version
@@ -39,6 +39,7 @@ python --version
 
 #apt install -y python3
 #apt install -y ethereum
+apt install -y wget
 wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
 tar -xvzf z3-4.5.0.tar.gz
 cd z3-z3-4.5.0
