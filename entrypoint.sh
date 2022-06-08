@@ -3,8 +3,8 @@
 #
 # common
 #
-#apt update
-#apt install -y software-properties-common
+apt update
+apt install -y software-properties-common
 #add-apt-repository -y ppa:ethereum/ethereum
 #apt install -y solc
 
