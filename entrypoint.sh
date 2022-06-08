@@ -47,3 +47,7 @@ python3 scripts/mk_make.py --python
 cd build
 make
 make install
+pip3 install requests
+pip3 install web3
+pip3 install crytic_compile
+python3 oyente.py -s /github/workspace/calls.sol
