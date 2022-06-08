@@ -29,8 +29,9 @@
 #
 # Oyente
 #
+apt install -y python
 python --version
-python3 --version
+
 #apt install -y python3
 #apt install -y ethereum
 #wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
