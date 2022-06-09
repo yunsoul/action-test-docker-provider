@@ -36,7 +36,7 @@ pip3 install crytic_compile
 cd ..
 cd ..
 pwd
-pip3 install oyente
+git clone https://github.com/enzymefinance/oyente.git
 cd oyente/oyente
 pwd
 python3 oyente.py -s /github/workspace/calls.sol
