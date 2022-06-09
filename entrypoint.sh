@@ -53,6 +53,7 @@ apt install -y git
 git clone https://github.com/eth-sri/securify2.git
 cd securify2/securify/staticanalysis/libfunctors
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
+cd ../../..
 pip3 install -r requirements.txt
 pip3 install -e .
 securify --list
