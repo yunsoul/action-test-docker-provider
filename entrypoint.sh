@@ -49,6 +49,12 @@ echo "deb [signed-by=/usr/share/keyrings/souffle-archive-keyring.gpg] https://so
 apt update
 apt install -y souffle
 apt install -y graphviz
+apt install -y git
+git clone https://github.com/eth-sri/securify2.git
+cd securify2/securify/staticanalysis/libfunctors
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
+pip3 install -r requirements.txt
+pip3 install -e .
 securify --list
 
 #echo "Hello $1"
