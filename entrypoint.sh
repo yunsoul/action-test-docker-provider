@@ -3,9 +3,10 @@
 #
 # Pre-Operation
 #
-apt update
-apt install -y git
-git diff --name-only --diff-filter=AM
+ls -R
+#apt update
+#apt install -y git
+#git diff --name-only --diff-filter=AM
 
 #
 # common
