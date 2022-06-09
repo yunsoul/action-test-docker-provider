@@ -55,11 +55,17 @@ cd securify2/securify/staticanalysis/libfunctors
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
 cd ../../..
 pip3 install graphviz
+echo "1----------------------"
 pip3 install semantic_version
+echo "2----------------------"
 pip3 install py-solc
+echo "3---------------------"
 pip3 install py-etherscan-api
-pip2 install requests
+echo "4--------------------"
+pip3 install requests
+echo "5--------------------"
 pip3 install -e .
+echo "6--------------------"
 securify --list
 
 #echo "Hello $1"
