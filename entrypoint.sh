@@ -1,13 +1,19 @@
 #!/bin/sh -l
 
 #
+# Pre-Operation
+#
+apt install -y git
+git diff --name-only --diff-filter=AM
+
+#
 # common
 #
-apt update
-apt install -y software-properties-common
-apt install -y libssl-dev python3-dev python3-pip
-add-apt-repository -y ppa:ethereum/ethereum
-apt install -y solc
+#apt update
+#apt install -y software-properties-common
+#apt install -y libssl-dev python3-dev python3-pip
+#add-apt-repository -y ppa:ethereum/ethereum
+#apt install -y solc
 
 #
 # Mythrilp
@@ -41,32 +47,26 @@ apt install -y solc
 #exit 0
 
 #
-# Securify
+# Securify (not work)
 #
-apt install -y wget
-wget https://souffle-lang.github.io/ppa/souffle-key.public -O /usr/share/keyrings/souffle-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/souffle-archive-keyring.gpg] https://souffle-lang.github.io/ppa/ubuntu/ stable main" | tee /etc/apt/sources.list.d/souffle.list
-apt update
-apt install -y souffle
-apt install -y graphviz
-apt install -y git
-git clone https://github.com/eth-sri/securify2.git
-cd securify2/securify/staticanalysis/libfunctors
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
-cd ../../..
-pip3 install graphviz
-echo "1----------------------"
-pip3 install semantic_version
-echo "2----------------------"
-pip3 install py-solc
-echo "3---------------------"
-pip3 install py-etherscan-api
-echo "4--------------------"
-pip3 install requests
-echo "5--------------------"
-pip3 install -e .
-echo "6--------------------"
-securify --list
+#apt install -y wget
+#wget https://souffle-lang.github.io/ppa/souffle-key.public -O /usr/share/keyrings/souffle-archive-keyring.gpg
+#echo "deb [signed-by=/usr/share/keyrings/souffle-archive-keyring.gpg] https://souffle-lang.github.io/ppa/ubuntu/ stable main" | tee /etc/apt/sources.list.d/souffle.list
+#apt update
+#apt install -y souffle
+#apt install -y graphviz
+#apt install -y git
+#git clone https://github.com/eth-sri/securify2.git
+#cd securify2/securify/staticanalysis/libfunctors
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
+#cd ../../..
+#pip3 install graphviz
+#pip3 install semantic_version
+#pip3 install py-solc
+#pip3 install py-etherscan-api
+#pip3 install requests
+#pip3 install -e .
+#securify --list
 
 #echo "Hello $1"
 #time=$(date)

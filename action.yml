@@ -1,6 +1,6 @@
-# action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+
+name: 'SCV'
+description: 'Smart Contract Vulnerability Scanner'
 inputs:
   target:  # id of input
     description: 'target to scan'
