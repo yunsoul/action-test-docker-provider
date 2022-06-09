@@ -20,8 +20,7 @@ apt install -y solc
 #
 # Oyente
 #
-#python3 --version
-#apt install -y ethereum
+apt install -y ethereum
 #apt install -y wget
 #wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
 #tar -xvzf z3-4.5.0.tar.gz
@@ -30,25 +29,25 @@ apt install -y solc
 #cd build
 #make
 #make install
-#pip3 install requests
-#pip3 install web3
-#pip3 install crytic_compile
 #cd ..
 #cd ..
-#apt install -y git
-#git clone https://github.com/enzymefinance/oyente.git
-#cd oyente/oyente
-#python3 oyente.py -s /github/workspace/calls.sol
-
+pip3 install requests
+pip3 install web3
+pip3 install crytic_compile
+apt install -y git
+git clone https://github.com/enzymefinance/oyente.git
+cd oyente/oyente
+python3 oyente.py -s /github/workspace/calls.sol
+exit 0
 
 #
 # Securify
 #
-apt install -y wget
-wget https://souffle-lang.github.io/ppa/souffle-key.public -O /usr/share/keyrings/souffle-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/souffle-archive-keyring.gpg] https://souffle-lang.github.io/ppa/ubuntu/ stable main" | sudo tee /etc/apt/sources.list.d/souffle.list
-apt update
-apt install -y souffle
+#apt install -y wget
+#wget https://souffle-lang.github.io/ppa/souffle-key.public -O /usr/share/keyrings/souffle-archive-keyring.gpg
+#echo "deb [signed-by=/usr/share/keyrings/souffle-archive-keyring.gpg] https://souffle-lang.github.io/ppa/ubuntu/ stable main" | tee /etc/apt/sources.list.d/souffle.list
+#apt update
+#apt install -y souffle
 
 #echo "Hello $1"
 #time=$(date)
