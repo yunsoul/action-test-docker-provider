@@ -36,6 +36,7 @@ pip3 install crytic_compile
 cd ..
 cd ..
 pwd
+apt install -y git
 git clone https://github.com/enzymefinance/oyente.git
 cd oyente/oyente
 pwd
