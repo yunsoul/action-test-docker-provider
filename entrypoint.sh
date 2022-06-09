@@ -54,7 +54,11 @@ git clone https://github.com/eth-sri/securify2.git
 cd securify2/securify/staticanalysis/libfunctors
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
 cd ../../..
-pip3 install -r requirements.txt
+pip3 install graphviz
+pip3 install semantic_version
+pip3 install py-solc
+pip3 install py-etherscan-api
+pip2 install requests
 pip3 install -e .
 securify --list
 
