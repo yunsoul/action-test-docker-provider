@@ -3,10 +3,19 @@
 #
 # Pre-Operation
 #
-ls -R
-#apt update
-#apt install -y git
-#git diff --name-only --diff-filter=AM
+FOUND=`find . -name "*.sol"`
+SCAN_LIST=($(echo "${FOUND[0]}" | tr '=' '\n'))
+NUM_FOUND=${#SCAN_LIST[@]}
+echo "===> number of file to scan = $NUM_FOUND"
+
+if [[ 0 == $NUM_FOUND ]]; then
+        echo "===> nothing to scan..."
+else
+        for index in "${!SCAN_LIST[@]}"
+        do
+                echo "${SCAN_LIST[index]}"
+        done
+fi
 
 #
 # common
