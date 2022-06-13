@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+set -e
+
 echo "=================="
 echo $1
 echo "=================="
@@ -24,11 +26,11 @@ fi
 #
 # common
 #
-#apt update
-#apt install -y software-properties-common
-#apt install -y libssl-dev python3-dev python3-pip
-#add-apt-repository -y ppa:ethereum/ethereum
-#apt install -y solc
+apt update
+apt install -y software-properties-common
+apt install -y libssl-dev python3-dev python3-pip
+add-apt-repository -y ppa:ethereum/ethereum
+apt install -y solc
 
 #
 # Mythrilp
