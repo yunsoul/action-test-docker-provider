@@ -23,7 +23,7 @@ outputs:
 runs:
   using: 'composite'
 
-    - id: scanner_1
+    - id: scanner-1
       run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
       shell: bash
 
