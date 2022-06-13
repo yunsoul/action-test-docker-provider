@@ -1,5 +1,9 @@
 #!/bin/bash -l
 
+echo "=================="
+echo $1
+echo "=================="
+
 #
 # Pre-Operation
 #

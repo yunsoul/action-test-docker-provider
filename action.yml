@@ -1,21 +1,35 @@
 
-name: 'SCV'
+name: 'Spectra'
 description: 'Smart Contract Vulnerability Scanner'
+
 inputs:
   target:  # id of input
     description: 'target to scan'
-    required: true
+    required: false
     default: '.'
     type: string
+
+  mode:
+    description: 'scan mode'
+    required: true
+    type: string
+
 outputs:
+# each output : < 1 MB, output total : < 50 MB
   time: # id of output
-    description: 'The time we greeted you'
+    description: 'random number'
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-#    - ${{ inputs.who-to-greet }}
-    - ${{ inputs.target }}
+  using: 'composite'
+
+    - id: scanner_1
+      run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
+      shell: bash
+
+    - id: random-number-generator
+      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      shell: bash
 branding:
   icon: 'shield'
   color: 'blue'
