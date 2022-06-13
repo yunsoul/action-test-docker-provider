@@ -35,10 +35,12 @@ sudo apt install -y solc
 #
 # Mythrilp
 #
-#yes | pip3 install mythril
-#myth version
-#myth analyze /github/workspace/*.sol -o json
-
+yes | pip3 install mythril
+myth version
+for index in "${!SCAN_LIST[@]}"
+do
+	myth analyze /github/workspace/${SCAN_LIST[index]} -o json
+done
 
 #
 # Oyente
