@@ -14,11 +14,15 @@ SCAN_LIST=($(echo "${FOUND[0]}" | tr '=' '\n'))
 NUM_FOUND=${#SCAN_LIST[@]}
 echo "===> number of file to scan = $NUM_FOUND"
 
+PREFIX="./"
 if [[ 0 == $NUM_FOUND ]]; then
         echo "===> nothing to scan..."
 else
         for index in "${!SCAN_LIST[@]}"
         do
+				temp=${SCAN_LIST[index]}
+				temp=${temp#"$PREFIX"}
+				SCAN_LIST[index]=$temp
                 echo "${SCAN_LIST[index]}"
         done
 fi
