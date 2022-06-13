@@ -22,6 +22,7 @@ outputs:
 
 runs:
   using: 'composite'
+  steps:
 
     - id: scanner-1
       run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
@@ -30,6 +31,7 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
+
 branding:
   icon: 'shield'
   color: 'blue'
