@@ -22,7 +22,7 @@ outputs:
 
   scan-result:
     description: 'scan result'
-    value: ${{ stpes.scan-result.outputs.result1 }}
+    value: ${{ steps.scan-result.outputs.result1 }}
 
 runs:
   using: 'composite'
