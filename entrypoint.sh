@@ -14,15 +14,15 @@ SCAN_LIST=($(echo "${FOUND[0]}" | tr '=' '\n'))
 NUM_FOUND=${#SCAN_LIST[@]}
 echo "===> number of file to scan = $NUM_FOUND"
 
-PREFIX="./"
+#PREFIX="./"
 if [[ 0 == $NUM_FOUND ]]; then
         echo "===> nothing to scan..."
 else
         for index in "${!SCAN_LIST[@]}"
         do
-				temp=${SCAN_LIST[index]}
-				temp=${temp#"$PREFIX"}
-				SCAN_LIST[index]=$temp
+				#temp=${SCAN_LIST[index]}
+				#temp=${temp#"$PREFIX"}
+				#SCAN_LIST[index]=$temp
                 echo "${SCAN_LIST[index]}"
         done
 fi
@@ -43,7 +43,8 @@ yes | pip3 install mythril
 myth version
 for index in "${!SCAN_LIST[@]}"
 do
-	myth analyze /github/workspace/${SCAN_LIST[index]} -o json
+	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
+	myth analyze ${SCAN_LIST[index]} -o json
 done
 
 #
