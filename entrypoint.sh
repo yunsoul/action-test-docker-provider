@@ -44,7 +44,7 @@ myth version
 for index in "${!SCAN_LIST[@]}"
 do
 	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
-	myth analyze ${SCAN_LIST[index]} -o json
+	myth analyze ${SCAN_LIST[index]} -o json > result1.txt
 done
 
 #
