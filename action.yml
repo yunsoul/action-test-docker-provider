@@ -33,7 +33,7 @@ runs:
       shell: bash
 
     - id: scan-result
-      run: echo "::set-output name=result1::$(cat result1.txt)"
+      run: echo "::set-output name=result1::$(cat result.sarif)"
       shell: bash
 
     - id: random-number-generator

@@ -27,6 +27,7 @@ else
         done
 fi
 TOOL_ID=0
+TOOL_NUM=1
 #
 # common
 #
@@ -52,12 +53,13 @@ done
 index=$(( index+1 ))
 ./conv "merge" $TOOL_ID $index
 
-TOOL_ID=$(( TOOL_ID+1 ))
 
+./conv "generate" $TOOL_NUM
 
 #
 # Oyente
 #
+#TOOL_ID=$(( TOOL_ID+1 ))
 #apt install -y ethereum
 #apt install -y wget
 #wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
