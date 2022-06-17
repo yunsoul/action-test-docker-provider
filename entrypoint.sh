@@ -26,7 +26,7 @@ else
                 echo "${SCAN_LIST[index]}"
         done
 fi
-
+TOOL_ID=0
 #
 # common
 #
@@ -39,13 +39,18 @@ sudo apt install -y solc
 #
 # Mythrilp
 #
-yes | pip3 install mythril
+pip3 install mythril
 myth version
 for index in "${!SCAN_LIST[@]}"
 do
 	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
-	myth analyze ${SCAN_LIST[index]} -o json > result1.txt
+	myth analyze ${SCAN_LIST[index]} -o json > "result_${TOOL_ID}_${index}.json"
+	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
 done
+index=$(( index+1 ))
+./conv "merge" $TOOL_ID $index
+
+TOOL_ID=$(( TOOL_ID+1 ))
 
 #
 # Oyente
