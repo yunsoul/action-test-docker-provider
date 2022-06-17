@@ -42,7 +42,7 @@ runs:
 
     - name: upload result
       uses: github/codeql-action/upload-sarif@v2
-       with:
+      with:
         sarif_file: result.sarif
         category: Spectra
 
