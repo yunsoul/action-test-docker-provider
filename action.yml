@@ -33,18 +33,13 @@ runs:
       shell: bash
 
     - id: scan-result
-      run: echo "::set-output name=scan-result::$(cat result.sarif)"
+      #run: echo "::set-output name=scan-result::$(cat result.sarif)"
+      run: echo "::set-output name=scan-result::result.sarif"
       shell: bash
 
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
       shell: bash
-
-    - name: upload result
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: result.sarif
-        category: Spectra
 
 branding:
   icon: 'shield'
