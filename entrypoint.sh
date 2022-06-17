@@ -36,7 +36,7 @@ TOOL_ID=0
 #sudo add-apt-repository -y ppa:ethereum/ethereum
 #sudo apt install -y solc
 wget https://raw.githubusercontent.com/yunsoul/action-test-docker-provider/main/conv
-
+chmod +x conv
 #
 # Mythrilp
 #
