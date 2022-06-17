@@ -41,10 +41,10 @@ runs:
       shell: bash
 
     - name: upload result
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: result.sarif
-          category: Spectra
+      uses: github/codeql-action/upload-sarif@v2
+       with:
+        sarif_file: result.sarif
+        category: Spectra
 
 branding:
   icon: 'shield'
