@@ -5,8 +5,7 @@ set -e
 echo "=================="
 echo $1
 echo "=================="
-ls -R
-echo "=================="
+
 #
 # Pre-Operation
 #
@@ -31,30 +30,30 @@ TOOL_ID=0
 #
 # common
 #
-#sudo apt update
-#sudo apt install -y software-properties-common
-#sudo apt install -y libssl-dev python3-dev python3-pip
-#sudo add-apt-repository -y ppa:ethereum/ethereum
-#sudo apt install -y solc
+sudo apt update
+sudo apt install -y software-properties-common
+sudo apt install -y libssl-dev python3-dev python3-pip
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt install -y solc
 wget https://raw.githubusercontent.com/yunsoul/action-test-docker-provider/main/conv
 chmod +x conv
+
 #
 # Mythrilp
 #
-#pip3 install mythril
-#myth version
-#for index in "${!SCAN_LIST[@]}"
-#do
-#	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
-#	myth analyze ${SCAN_LIST[index]} -o json > "result_${TOOL_ID}_${index}.json"
-#	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
-#done
-#index=$(( index+1 ))
-#./conv "merge" $TOOL_ID $index
+pip3 install mythril
+myth version
+for index in "${!SCAN_LIST[@]}"
+do
+	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
+	myth analyze ${SCAN_LIST[index]} -o json > "result_${TOOL_ID}_${index}.json"
+	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
+done
+index=$(( index+1 ))
+./conv "merge" $TOOL_ID $index
 
-#TOOL_ID=$(( TOOL_ID+1 ))
+TOOL_ID=$(( TOOL_ID+1 ))
 
-./conv
 
 #
 # Oyente
