@@ -46,12 +46,9 @@ runs:
     #    sarif_file: result.sarif
     #    category: Spectra
 
-    - run: curl
+    - name: send result
+      run: curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post"
       shell: bash
-
-    #- name: send result
-    #  run: curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post"
-    #  shell: bash
 
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
