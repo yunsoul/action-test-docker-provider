@@ -28,23 +28,27 @@ runs:
   using: 'composite'
   steps:
 
-    - id: scan
-      run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
-      shell: bash
+    #- id: scan
+    #  run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
+    #  shell: bash
 
-    - run: echo "::set-output name=scan-result::$(cat result.sarif)"
-      shell: bash
+    #- run: echo "::set-output name=scan-result::$(cat result.sarif)"
+    #  shell: bash
 
-    - id: scan-result
-      #run: echo "::set-output name=scan-result::$(cat result.sarif)"
-      run: echo "::set-output name=scan-result::result.sarif"
-      shell: bash
+    #- id: scan-result
+    #  #run: echo "::set-output name=scan-result::$(cat result.sarif)"
+    #  run: echo "::set-output name=scan-result::result.sarif"
+    #  shell: bash
   
-    - name: upload result
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: result.sarif
-        category: Spectra
+    #- name: upload result
+    #  uses: github/codeql-action/upload-sarif@v2
+    #  with:
+    #    sarif_file: result.sarif
+    #    category: Spectra
+
+    - name: send result
+      uses = "swinton/httpie.action@master"
+      args = ["--default-scheme=https", "POST", "postman-echo.com/post", "hello=world"]
 
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
