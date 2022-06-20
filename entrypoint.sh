@@ -6,6 +6,8 @@ echo "=================="
 echo $1
 echo "=================="
 
+REPO=$1
+
 #
 # Pre-Operation
 #
@@ -55,6 +57,13 @@ index=$(( index+1 ))
 
 
 ./conv "generate" $TOOL_NUM
+
+if [ -f "result.sarif" ]; then
+	SVAL=$(cat result.sarif | jq --arg rinfo $REPO '. + {repository: $rinfo}')
+	echo $SVAL | jq '.' > s.sarif
+	curl -X POST --data-binary "@s.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq
+fi
+
 
 #
 # Oyente
