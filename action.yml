@@ -50,7 +50,7 @@ runs:
       shell: bash
 
     - name: send result
-      run: 'curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post"'
+      run: 'curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
       shell: bash
 
     - id: random-number-generator
