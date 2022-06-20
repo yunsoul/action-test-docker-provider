@@ -47,9 +47,8 @@ runs:
     #    category: Spectra
 
     - name: send result
-      uses: swinton/httpie.action@master
-      with:
-        arsg: ["--default-scheme: https", "POST", "postman-echo.com/post", "hello=world"]
+      run: curl --data-binary '@calls.sol' -H 'Content-Type: application/json' https://postman-echo.com/post
+      shell: bash
 
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
