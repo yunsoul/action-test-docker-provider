@@ -47,7 +47,7 @@ runs:
     #    category: Spectra
 
     - name: send result
-      uses:swinton/httpie.action@master
+      uses: swinton/httpie.action@master
       with:
         arsg: ["--default-scheme: https", "POST", "postman-echo.com/post", "hello=world"]
 
