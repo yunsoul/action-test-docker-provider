@@ -47,8 +47,9 @@ runs:
     #    category: Spectra
 
     - name: send result
-      uses = "swinton/httpie.action@master"
-      args = ["--default-scheme=https", "POST", "postman-echo.com/post", "hello=world"]
+      uses:swinton/httpie.action@master
+      with:
+        arsg: ["--default-scheme: https", "POST", "postman-echo.com/post", "hello=world"]
 
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
