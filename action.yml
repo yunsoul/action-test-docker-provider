@@ -24,6 +24,9 @@ outputs:
     description: 'scan result'
     value: ${{ steps.scan-result.outputs.scan-result }}
 
+  temp:
+    value: ${{ steps.temp.outputs.temp }}
+
 runs:
   using: 'composite'
   steps:
@@ -46,12 +49,13 @@ runs:
     #    sarif_file: result.sarif
     #    category: Spectra
 
-    - run: 'jq --arg repo bar/aaa \'. + {repo: $foo}\' calls.sol | jq \'.\' >> calls.sol'
+    - id: temp
+      run: echo "::set-output name=temp::$(cat calls.sol | jq --arg foo bar/aaa '. + {foo: $foo}')"
       shell: bash
 
     - name: send result
       #run: 'curl -X POST --data-binary "@result.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
-      run: 'curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
+      run: 'curl -X POST --data ${{ steps.temp.outputs.temp }} -H "content-type: application/json" "https://postman-echo.com/post" | jq'
       shell: bash
 
     - id: random-number-generator
