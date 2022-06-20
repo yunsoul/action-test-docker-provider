@@ -28,26 +28,30 @@ runs:
   using: 'composite'
   steps:
 
-    - id: scan
-      run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
-      shell: bash
+    #- id: scan
+    #  run: ${{ github.action_path }}/entrypoint.sh ${{ inputs.mode }}
+    #  shell: bash
 
-    - run: echo "::set-output name=scan-result::$(cat result.sarif)"
-      shell: bash
+    #- run: echo "::set-output name=scan-result::$(cat result.sarif)"
+    #  shell: bash
 
-    - id: scan-result
-      #run: echo "::set-output name=scan-result::$(cat result.sarif)"
-      run: echo "::set-output name=scan-result::result.sarif"
-      shell: bash
+    #- id: scan-result
+    #  #run: echo "::set-output name=scan-result::$(cat result.sarif)"
+    #  run: echo "::set-output name=scan-result::result.sarif"
+    #  shell: bash
   
-    - name: upload result
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: result.sarif
-        category: Spectra
+    #- name: upload result
+    #  uses: github/codeql-action/upload-sarif@v2
+    #  with:
+    #    sarif_file: result.sarif
+    #    category: Spectra
+
+    - run: 'jq --arg repo bar/aaa \'. + {repo: $foo}\' calls.sol | jq \'.\' >> calls.sol'
+      shell: bash
 
     - name: send result
-      run: 'curl -X POST --data-binary "@result.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
+      #run: 'curl -X POST --data-binary "@result.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
+      run: 'curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
       shell: bash
 
     - id: random-number-generator
