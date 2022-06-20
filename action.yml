@@ -47,7 +47,7 @@ runs:
         category: Spectra
 
     - name: send result
-      run: 'curl -X POST --data-binary "@calls.sol" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
+      run: 'curl -X POST --data-binary "@result.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq'
       shell: bash
 
     - id: random-number-generator
