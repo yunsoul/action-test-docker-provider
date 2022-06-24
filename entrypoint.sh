@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-set -e
+#set -e
 
 echo "=================="
 echo $1
@@ -133,4 +133,4 @@ fi
 #time=$(date)
 #echo "::set-output name=time::$time"
 
-
+exit 0
