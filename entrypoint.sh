@@ -88,8 +88,8 @@ TOOL_NUM=1
 # Semgrep
 #
 TOOL_ID=0
-python3 -m pip install semgrep
-semgrep --help
+pip3 install semgrep
+semgrep --version
 wget https://raw.githubusercontent.com/yunsoul/action-test-docker-provider/main/semgrep_rule.zip
 unzip semgrep_rule.zip -d rules
 for index in "${!SCAN_LIST[@]}"
