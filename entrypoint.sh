@@ -97,6 +97,12 @@ do
 	semgrep --config ./rules ${SCAN_LIST[index]} --sarif --output "result_${TOOL_ID}_${index}_.json"
 	jq '.' "result_${TOOL_ID}_${index}_.json" > "result_${TOOL_ID}_${index}.json"
 done
+ls -al
+cat result_0_0.json
+cat result_0_1.json
+cat result_0_2.json
+cat result_0_3.json
+
 
 
 #
