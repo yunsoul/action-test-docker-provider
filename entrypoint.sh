@@ -42,52 +42,43 @@ wget https://raw.githubusercontent.com/yunsoul/action-test-docker-provider/main/
 chmod +x conv
 
 
-TOOL_NUM=1
+TOOL_NUM=3
 #
 # Mythrilp
 #
-#TOOL_ID=0
-#pip3 install mythril
-#myth version
-#for index in "${!SCAN_LIST[@]}"
-#do
-#	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
-#	myth analyze ${SCAN_LIST[index]} -o json > "result_${TOOL_ID}_${index}.json"
-#	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
-#done
-#index=$(( index+1 ))
-#./conv "merge" $TOOL_ID $index
+TOOL_ID=0
+pip3 install mythril
+myth version
+for index in "${!SCAN_LIST[@]}"
+do
+	#myth analyze /github/workspace/${SCAN_LIST[index]} -o json
+	myth analyze ${SCAN_LIST[index]} -o json > "result_${TOOL_ID}_${index}.json"
+	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
+done
+index=$(( index+1 ))
+./conv "merge" $TOOL_ID $index
 
 
 
 #
 # Slither
 #
-#TOOL_ID=1
-#pip3 install slither-analyzer
-#for index in "${!SCAN_LIST[@]}"
-#do
-#	slither ${SCAN_LIST[index]} --sarif "result_${TOOL_ID}_${index}.json"
-#	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
-#done
-#index=$(( index+1 ))
-#./conv "merge" $TOOL_ID $index
-
-
-#./conv "generate" $TOOL_NUM
-
-#if [ -f "result.sarif" ]; then
-#	SVAL=$(cat result.sarif | jq --arg rinfo $REPO '. + {repository: $rinfo}')
-#	echo $SVAL | jq '.' > s.sarif
-#	curl -X POST --data-binary "@s.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq
-#fi
+TOOL_ID=1
+pip3 install slither-analyzer
+for index in "${!SCAN_LIST[@]}"
+do
+	slither ${SCAN_LIST[index]} --sarif "result_${TOOL_ID}_${index}.json"
+	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
+done
+index=$(( index+1 ))
+./conv "merge" $TOOL_ID $index
 
 
 
 #
 # Semgrep
 #
-TOOL_ID=0
+TOOL_ID=2
 pip3 install semgrep
 semgrep --version
 wget https://raw.githubusercontent.com/yunsoul/action-test-docker-provider/main/semgrep_rule.zip
@@ -96,12 +87,19 @@ for index in "${!SCAN_LIST[@]}"
 do
 	semgrep --config ./rules ${SCAN_LIST[index]} --sarif --output "result_${TOOL_ID}_${index}_.json"
 	jq '.' "result_${TOOL_ID}_${index}_.json" > "result_${TOOL_ID}_${index}.json"
+	./conv "create" $TOOL_ID "result_${TOOL_ID}_${index}.json"
 done
-ls -al
-cat result_0_0.json
-cat result_0_1.json
-cat result_0_2.json
-cat result_0_3.json
+index=$(( index+1 ))
+./conv "merge" $TOOL_ID $index
+
+
+./conv "generate" $TOOL_NUM
+
+if [ -f "result.sarif" ]; then
+	SVAL=$(cat result.sarif | jq --arg rinfo $REPO '. + {repository: $rinfo}')
+	echo $SVAL | jq '.' > s.sarif
+	curl -X POST --data-binary "@s.sarif" -H "content-type: application/json" "https://postman-echo.com/post" | jq
+fi
 
 
 
